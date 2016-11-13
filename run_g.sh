@@ -1,7 +1,7 @@
 #!/bin/sh
 
-GUNICORN=/usr/local/bin/gunicorn
-ROOT=/path/to/project
+GUNICORN=/usr/bin/gunicorn
+ROOT=/home/box/web
 PID=/var/run/gunicorn.pid
 
 APP=main:application

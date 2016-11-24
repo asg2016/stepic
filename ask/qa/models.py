@@ -17,6 +17,8 @@ class Question(models.Model):
 
     def __unicode__(self):
         return self.title
+    class Meta:
+        db_table = 'Question'
 
 class QuestionManager(models.Manager):
     def new(self):
@@ -29,3 +31,5 @@ class Answer(models.Model):
     added_at = models.DateTimeField(auto_now=True,default=now())
     question = models.ForeignKey(Question)
     author = models.ForeignKey(User, default=1, null=True)
+    class Meta:
+        db_table = 'Answer'

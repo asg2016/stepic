@@ -11,13 +11,18 @@ class Question(models.Model):
     rating = models.IntegerField(default=0)
     author = models.ForeignKey(User, related_name='question_author', default=1)
     likes = models.ManyToManyField(User, related_name='question_likes', default=0)
-
+    objects = QuestionManager()
     def get_absolute_url(self):
         return reverse('question', kwargs={"id": self.id})
 
     def __unicode__(self):
         return self.title
 
+class QuestionManager(models.Manager):
+    def new(self):
+        return self.filter(added_at=now())
+    def popular(self):
+        return self.orderby('rating')
 
 class Answer(models.Model):
     text = models.TextField()

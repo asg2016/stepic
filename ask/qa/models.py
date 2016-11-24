@@ -7,10 +7,10 @@ from django.core.urlresolvers import reverse
 class Question(models.Model):
     title = models.CharField(max_length=200)
     text = models.TextField()
-    added_at = models.DateTimeField(auto_now=True,default=now())
+    added_at = models.DateTimeField(blank=True,auto_now_add=True)
     rating = models.IntegerField(default=0)
     author = models.ForeignKey(User, related_name='question_author', default=1)
-    likes = models.ManyToManyField(User, related_name='question_likes', default=0)
+    likes = models.ManyToManyField(User, related_name='question_like_user', default=0)
     objects = QuestionManager()
     def get_absolute_url(self):
         return reverse('question', kwargs={"id": self.id})

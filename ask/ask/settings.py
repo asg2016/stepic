@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'autofixture',
     'debug_toolbar',
-    'qa',
+    'qa'
 ]
 
 MIDDLEWARE_CLASSES = [
